@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+    <h2>Submitted Names</h2>
+    <ul id="nameList"></ul>
+
+    <script>
+        async function fetchNames() {
+            let response = await fetch("https://your-backend-url.onrender.com/admin");
+            let data = await response.json();
+            let nameList = document.getElementById("nameList");
+
+            data.forEach(entry => {
+                let li = document.createElement("li");
+                li.textContent = entry.name;
+                nameList.appendChild(li);
+            });
+        }
+
+        fetchNames();
+    </script>
+</body>
+</html>
